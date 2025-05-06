@@ -1,4 +1,3 @@
-
 package org.example.database;
 
 import java.sql.Connection;
@@ -23,6 +22,7 @@ public class DatabaseConnection {
             return;
 
         try {
+//            connection.commit();
             connection.close();
         } catch (SQLException e) {
             System.err.println(e.getMessage());
