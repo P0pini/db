@@ -1,3 +1,4 @@
+
 package org.example.database;
 
 import java.sql.Connection;
@@ -10,23 +11,26 @@ public class DatabaseConnection {
     public void connect(String dbPath){
         try {
             connection = DriverManager.getConnection("jdbc:sqlite:" + dbPath);
-        } catch(SQLException e){
-            //Wyrzucamy RuntimeException, bo po błędzie połączenia z bazą
-            //dalsza część programu nie ma sensu i możemy zokończyć z błędem
+        } catch (SQLException e) {
+            // wyrzucamy RuntimeException, bo po błędzie połączenia z bazą
+            // dalsza część programu nie ma sensu i możemy zakończyć z błedem
             throw new RuntimeException(e);
         }
     }
 
-    public void disconnect(){
-        if(connection == null)
+    public void disconnect() {
+        if (connection == null)
             return;
+
         try {
             connection.close();
-        }catch (SQLException e){
+        } catch (SQLException e) {
             System.err.println(e.getMessage());
         }
+
     }
-    public Connection getConnection(){
+
+    public Connection getConnection() {
         return connection;
     }
 }
